@@ -8,6 +8,13 @@ This tool also generates a statistical report on the use of HTML tags.
 - [Self closing tags](#self-closing-tags) are excluded from the alert.
 
 
+## Report columns
+- **Tag Name:** The found tag name
+- **Open:** Number of opening tags, ex.: &lt;a href="..."&gt;, &lt;br /&gt;, &lt;img src=&quot;...&quot; /&gt;, etc.
+- **Close:** Number of closing tags, ex.: &lt;/a&gt;, &lt;/tr&gt;, etc.
+- **Frequency:** The porcentage of ocurrence of this tag aginst the most used tag.
+
+
 ## Self closing tags
 
 List of all valid HTML [void-elements](https://www.w3.org/TR/html5/syntax.html#void-elements) that are excluded from the alert report.
