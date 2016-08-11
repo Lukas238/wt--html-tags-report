@@ -9,6 +9,7 @@ This tool also generates a statistical report on the use of HTML tags.
 
 
 ## Report columns
+
 - **Tag Name:** The found tag name
 - **Open:** Number of opening tags, ex.: &lt;a href="..."&gt;, &lt;br /&gt;, &lt;img src=&quot;...&quot; /&gt;, etc.
 - **Close:** Number of closing tags, ex.: &lt;/a&gt;, &lt;/tr&gt;, etc.
@@ -18,6 +19,7 @@ This tool also generates a statistical report on the use of HTML tags.
 ## Self closing tags
 
 List of all valid HTML [void-elements](https://www.w3.org/TR/html5/syntax.html#void-elements) that are excluded from the alert report.
+
 - area
 - base
 - br
