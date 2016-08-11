@@ -127,7 +127,7 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="tab-stats">
 					<?php if($report){ ?>
-						<h3 class="" data-width="400">Tags Stats</h3>
+						<h3 class="" data-width="400">Results</h3>
 						
 						<div class="wdg-report clearfix">
 							<div class="wdg-alerts alerts-<?php echo $report['total_alerts']; ?>"><label>Total alerts:</label> <?php echo $report['total_alerts']; ?></div>
@@ -140,7 +140,7 @@
 
 					<?php }else{ ?>
 					
-						<h3>File upload</h3>
+						<h3>New report</h3>
 						<p>Upload the HTM/HTML file from which to make the tags statistic report.</p>
 						<form id="form" class="form" action="index.php" method="POST" enctype="multipart/form-data">
 							<div class="form-group col-sm-8 col-md-6">
