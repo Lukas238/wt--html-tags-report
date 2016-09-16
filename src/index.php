@@ -1,33 +1,50 @@
 <?php
-	include_once(dirname(__FILE__) .'/inc/functions.php');
+include_once(realpath( __DIR__ . "\inc\config.php"));
+include_once(dirname(__FILE__) .'/inc/functions.php');
+
+wl_add_security();
 	
-	$report = false;
+$report = false;
+if( isset($_POST['submit']) ){
 	if( isset($_FILES['frm_file']['name']) ){
 		if( $_FILES['frm_file']['name'] == '') {
-			$feedback[] = array('warning', 'Please upload a file.');
+			wl_add_feedback([
+				'type'		=>	'warning',
+				'message'	=>	'Please upload a file.'
+			]);
 		}else{
-			$report = get_html_report($_FILES['frm_file']);
+			if( $_FILES['frm_file']['type'] != "text/html" ){
+				wl_add_feedback([
+					'type'		=>	'danger',
+					'message'	=>	'Only .HTM or .HTML files are supported.'
+				]);
+			}else{
+				$report = get_html_report($_FILES['frm_file']);
+			}
 		}
+	}else{
+		wl_add_feedback([
+			'type'		=>	'warning',
+			'message'	=>	'Please upload a file.'
+		]);
 	}
+}
 ?>
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>HTML Statistics</title>
+	<title>HTML Tags Report - WundermanLab</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- STYLES -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//bootswatch.com/paper/bootstrap.min.css">
+	<?php wl_admin_css(); ?>
 	<style>
-		html, body{
-			margin: 0;
-			padding: 0;
-			height: 100%;
+		#main{
+			padding-top: 65px;
 		}
-		.feedback .msg{
-			padding: 15px;
-		}
-		
 		#stats-table thead th:nth-child(1){
 			width: 100px;
 		}
@@ -97,9 +114,26 @@
 			border: 2px solid green;
 		}
 		@media screen and (max-width: 510px){
-			
 			h1{
 				font-size: 7vw;
+			}
+		}
+		.navbar-brand {
+			position: relative;
+			padding-left: 65px;
+		}
+		.navbar-brand img{
+			width: 45px;
+			display: block;
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translateY(-50%);
+		}
+		@media screen and (max-width: 480px){
+			.btn-mobile{
+				width: 100%;
+				height: 44px;
 			}
 		}
 
@@ -107,16 +141,36 @@
 </head>
 <body class="container-fluid">
 
-
-	<div id="wrapper" class="row">
+	<?php include_once("inc/analyticstracking.php") ?>
+	
+	<div id="wrapper">
 		
-		<?php feedback('col-sm-8 col-sm-offset-2'); ?>
-		
-		<header id="header" class="col-sm-8 col-sm-offset-2">
-			<h1>HTML Tags Statistics Report</h1>
+		<header id="header">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+			  <div class="container-fluid">
+					
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="#"><img src="images/logo.png" title="Find the missing tags!" />Tags Report</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="mobile-menu">
+					<?php wl_login_widget(); ?>
+				</div>
+			  </div>
+			</nav>
 		</header>
-		<main id="main" class="col-sm-8 col-sm-offset-2">
-			<div id="content">
+
+		<main id="main" class="row">
+			
+			<?php wl_feedback(['styles' => 'col-sm-8 col-sm-offset-2']); ?>
+		
+			<div id="content" class="col-sm-8 col-sm-offset-2">
 				
 				
 				<ul class="nav nav-tabs" role="tablist">
@@ -146,7 +200,7 @@
 							<div class="form-group col-sm-8 col-md-6">
 								<input type="file" id="frm-file" name="frm_file">
 							</div>
-							<button id="btn-batch" class="btn btn-primary col-xs-12 col-sm-3 col-md-2" type="submit" name="submit">Make Report</button>							
+							<button id="btn-batch" class="btn btn-primary btn-mobile col-xs-12 col-sm-3 col-md-2" type="submit" name="submit">Make Report</button>
 						</form>
 					<?php } ?>
 					</div>
@@ -221,7 +275,8 @@
 	<script src="//rawgit.com/Lukas238/better-input-file/master/src/betterInputFileButton.js"></script>
 	<script>
 		$('input:file').betterInputFile({
-			'btnClass': 'btn btn-secondary'
+			'btnClass': 'btn btn-secondary',
+			'placeholder': '  No file selected'
 		});
 			
 	</script>

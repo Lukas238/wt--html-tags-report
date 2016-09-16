@@ -7,31 +7,10 @@
 /*	GLOBALS
 **********************/
 $self_closing_tags = ["area","base","br","col","command","embed","hr","img","input","keygen","link","meta","param","source","track","wbr"];
-$feedback = [];
 
 
 /*	FUNCTIONS
 **********************/
-
-/*
-*	Output the html of the feedback messages
-*	
-*	array( string $alert_css_class , string $alert_message )
-*	
-*	$alert_css_class = success | info | warning | danger
-*	$alert_message = The aler message.
-*	
-*/
-function feedback($styles){
-	global $feedback;
-	
-	$output = "";
-	foreach( $feedback as $feed){
-		$output .= '<p class="msg bg-'.$feed[0].'">'.$feed[1].'</p>';
-	}
-	echo '<div class="feedback '.$styles.'">' . $output . '</div>';
-}
-
 
 
 /*	
