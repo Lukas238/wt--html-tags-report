@@ -1,4 +1,4 @@
-# html-tags-statistics
+# u-tools-html-tags-report
 
 The main function of this tool is to determine if there are odd HTML tags in a file, which would mean that some tags where not properly closed.
 This tool also generates a statistical report on the use of HTML tags.
