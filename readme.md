@@ -1,4 +1,4 @@
-# u-tools-html-tags-report
+# u-html-tags-report
 
 The main function of this tool is to determine if there are odd HTML tags in a file, which would mean that some tags where not properly closed.
 This tool also generates a statistical report on the use of HTML tags.
@@ -6,6 +6,10 @@ This tool also generates a statistical report on the use of HTML tags.
 
 - The labels are automatically detected by means of regular expressions.
 - [Self closing tags](#self-closing-tags) are excluded from the alert.
+
+## Links
+
+- **GIT**: <git@ec2-54-232-93-180.sa-east-1.compute.amazonaws.com:emailsfrontend-team/u-html-tags-report.git>
 
 
 ## Report columns
