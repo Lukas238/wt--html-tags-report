@@ -39,7 +39,7 @@ if( isset($_POST['submit']) ){
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- STYLES -->
-	<link rel="stylesheet" href="//bootswatch.com/paper/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css">
 	<?php wl_admin_css(); ?>
 	<style>
 		#main{
