@@ -9,7 +9,7 @@ This tool also generates a statistical report on the use of HTML tags.
 
 ## Links
 
-- **GIT**: <git@ec2-54-232-93-180.sa-east-1.compute.amazonaws.com:emailsfrontend-team/u-html-tags-report.git>
+- **GIT**: <git@bitbucket-ssh.uhub.biz:7999/wunargua/u-html-tags-report.git>
 
 
 ## Report columns
